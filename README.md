@@ -1,29 +1,20 @@
-# Custom Streamlit Thought Callback For Langchain Agents
-
-This project provides a `StreamlitThoughtCallbackHandler` class that extends `BaseCallbackHandler` for handling callbacks in a Streamlit application. It allows you to display the streamling output of an LLM (Language Model) along with intermediate results history.
+# Custom Thought Callback Handler For Language Model Agents
+This project provides a `ThoughtCallbackHandler` class that extends `BaseCallbackHandler` for handling callbacks in a Language Model (LM) execution context. It allows you to display the output of an LM along with intermediate results history.
 
 ## Installation
-
 1. Clone the repository.
 2. Install the required dependencies.
 
 ## Usage
-
-To use `StreamlitThoughtCallbackHandler` in your Streamlit application, simply import the class and create an instance with two empty Streamlit areas:
+To use `ThoughtCallbackHandler`, simply import the class and create an instance:
 
 ```python
-from streamlit_thought_callback import StreamlitThoughtCallbackHandler
-import streamlit as st
-
-response_area = st.empty()
-thought_area = st.empty()
-
+from thought_callback_handler import ThoughtCallbackHandler
 ...
-
-callback_handler = StreamlitThoughtCallbackHandler(response_area, thought_area)
+callback_handler = ThoughtCallbackHandler()
 ```
 
-Then, pass this callback_handler to your LLM or agent, and it will handle the callbacks accordingly. I.e.:
+Then, pass this `callback_handler` to your LM or agent, and it will handle the callbacks accordingly. For instance:
 
 ```python
 response = executor.run({"input":payload, "chat_history":chat_history}, callbacks=[callback_handler])
